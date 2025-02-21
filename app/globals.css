@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin 'tailwind-scrollbar';
+
 @theme {
   --color-background: oklch(100% 0 0);
   --color-foreground: oklch(20.46% 0 0);
@@ -17,9 +19,9 @@
 }
 
 body {
-  color: var(--color-foreground);
-  background: var(--color-background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-background text-foreground font-sans antialiased;
+}
+
+.scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-muted-foreground scrollbar-track-muted;
 }
