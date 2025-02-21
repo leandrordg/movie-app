@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import { HeaderFallback } from "@/components/header-fallback";
-import { MovieHeader } from "@/components/movie-header";
+import { MovieDetails } from "@/components/movie-details";
 
 interface Props {
   params: Promise<{ movieId: string }>;
@@ -13,7 +13,7 @@ export default async function MoviePage({ params }: Props) {
   return (
     <main>
       <Suspense fallback={<HeaderFallback />}>
-        <MovieHeader movieId={movieId} />
+        <MovieDetails movieId={movieId} />
       </Suspense>
     </main>
   );

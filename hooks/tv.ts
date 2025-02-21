@@ -38,3 +38,14 @@ export const getTopRatedTvs = async (): Promise<TvsRequest> => {
 
   return data;
 };
+
+export const getTvDetails = async (tvId: string): Promise<TvDetails> => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/${tvId}?language=pt-BR`,
+    options
+  );
+
+  const data: TvDetails = await response.json();
+
+  return data;
+};

@@ -6,11 +6,16 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
 } from "@/hooks/movies";
-import { getDiscoverTvs, getPopularTvs, getTopRatedTvs } from "@/hooks/tv";
+import {
+  getDiscoverTvs,
+  getPopularTvs,
+  getTopRatedTvs,
+  getTvDetails,
+} from "@/hooks/tv";
 
 export async function getMovie(movieId: string, type: GetMovieType) {
   switch (type) {
-    case "header":
+    case "details":
       return await getMovieDetails(movieId);
   }
 }
@@ -27,6 +32,13 @@ export async function getMovies(type: GetMoviesType) {
       return await getTopRatedMovies();
     case "upcoming":
       return await getUpcomingMovies();
+  }
+}
+
+export async function getTv(tvId: string, type: GetTvType) {
+  switch (type) {
+    case "details":
+      return await getTvDetails(tvId);
   }
 }
 

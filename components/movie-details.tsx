@@ -8,6 +8,7 @@ import {
   formatReleaseDate,
   formatRuntime,
 } from "@/utils/format-values";
+
 import {
   CalendarIcon,
   ChevronLeftIcon,
@@ -15,8 +16,8 @@ import {
   TimerIcon,
 } from "lucide-react";
 
-export async function MovieHeader({ movieId }: { movieId: string }) {
-  const movie = await getMovie(movieId, "header");
+export async function MovieDetails({ movieId }: { movieId: string }) {
+  const movie = await getMovie(movieId, "details");
 
   if (!movie) return notFound();
 
@@ -61,22 +62,30 @@ export async function MovieHeader({ movieId }: { movieId: string }) {
           {movie.title}
         </h1>
 
-        {movie.tagline && <p className="text-muted-foreground">{movie.tagline}</p>}
+        {movie.tagline && (
+          <p className="text-muted-foreground">{movie.tagline}</p>
+        )}
 
-        {movie.overview && <p>{movie.overview}</p>}
+        {movie.overview && <p className="line-clamp-3">{movie.overview}</p>}
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div>
             <p className="flex items-center gap-1 text-muted-foreground">
               <CalendarIcon className="size-4" /> Lançamento
             </p>
-            <p>{formatReleaseDate(movie.release_date)}</p>
+            <p>
+              {formatReleaseDate(movie.release_date, { dateStyle: "medium" })}
+            </p>
           </div>
           <div>
             <p className="flex items-center gap-1 text-muted-foreground">
               <StarIcon className="size-4" /> Avaliação média
             </p>
-            <p>{formatAverageVote(movie.vote_average)}</p>
+            <p>
+              {formatAverageVote(movie.vote_average, {
+                fractionalSecondDigits: 1,
+              })}
+            </p>
           </div>
           <div>
             <p className="flex items-center gap-1 text-muted-foreground">
