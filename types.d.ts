@@ -1,3 +1,12 @@
+type GetMoviesType =
+  | "discover"
+  | "nowPlaying"
+  | "popular"
+  | "topRated"
+  | "upcoming";
+
+type GetTvsType = "discover" | "popular" | "topRated";
+
 interface MovieRequest {
   page: number;
   results: Movie[];

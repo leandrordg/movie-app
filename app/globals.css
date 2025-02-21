@@ -13,8 +13,8 @@
   :root {
     --color-background: oklch(20.46% 0 0);
     --color-foreground: oklch(100% 0 0);
-    --color-muted: oklch(82.34% 0 0);
-    --color-muted-foreground: oklch(33.29% 0 0);
+    --color-muted: oklch(16.17% 0 0);
+    --color-muted-foreground: oklch(38.13% 0 0);
   }
 }
 
