@@ -36,7 +36,7 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="relative flex-1 max-w-md ml-auto">
+        <div className="relative flex-1 md:max-w-md md:ml-auto">
           <input
             type="text"
             placeholder="buscar filmes e séries..."
