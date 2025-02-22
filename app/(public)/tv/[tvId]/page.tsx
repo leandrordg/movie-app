@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { HeaderFallback } from "@/components/header-fallback";
+import { DetailsFallback } from "@/components/details-fallback";
 import { TvDetails } from "@/components/tv-details";
 
 interface Props {
@@ -12,7 +12,7 @@ export default async function TvPage({ params }: Props) {
 
   return (
     <main>
-      <Suspense fallback={<HeaderFallback />}>
+      <Suspense fallback={<DetailsFallback />}>
         <TvDetails tvId={tvId} />
       </Suspense>
     </main>

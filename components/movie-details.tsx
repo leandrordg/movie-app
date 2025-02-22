@@ -34,64 +34,72 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
         />
       </div>
 
-      <div className="max-w-4xl mx-auto py-12 px-4 space-y-4 relative">
-        <div className="absolute -top-12 left-4">
-          <Link
-            href="/"
-            className="flex items-center gap-1 text-sm px-2 py-1 rounded-sm bg-background shadow"
-          >
-            <ChevronLeftIcon className="size-4" />
-            Voltar a página inicial
-          </Link>
+      <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 space-y-4 relative">
+        <div className="relative aspect-3/4 max-w-64 w-64 rounded-md overflow-clip hidden md:block">
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={movie.title}
+            className="bg-muted object-cover"
+            sizes="30vw"
+            fill
+          />
         </div>
 
-        {movie.genres && (
-          <div className="flex gap-2 flex-wrap">
-            {movie.genres.map((genre) => (
-              <div
-                key={genre.id}
-                className="text-xs border border-muted rounded-md px-2 py-0.5"
-              >
-                {genre.name}
-              </div>
-            ))}
+        <div className="space-y-4 flex-1">
+          <div className="hidden md:block absolute -top-12 left-4">
+            <Link
+              href="/"
+              className="flex items-center gap-4 text-sm w-64 h-10 px-4 py-2 rounded-sm bg-background shadow"
+            >
+              <ChevronLeftIcon className="size-4" />
+              Voltar a página inicial
+            </Link>
           </div>
-        )}
 
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-balance">
-          {movie.title}
-        </h1>
+          {movie.genres && (
+            <div className="flex gap-2 flex-wrap">
+              {movie.genres.map((genre) => (
+                <button
+                  key={genre.id}
+                  className="text-xs border border-muted rounded-md px-2 py-0.5"
+                >
+                  {genre.name}
+                </button>
+              ))}
+            </div>
+          )}
 
-        {movie.tagline && (
-          <p className="text-muted-foreground">{movie.tagline}</p>
-        )}
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-balance">
+            {movie.title}
+          </h1>
 
-        {movie.overview && <p className="line-clamp-3">{movie.overview}</p>}
+          {movie.tagline && (
+            <p className="text-muted-foreground">{movie.tagline}</p>
+          )}
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div>
-            <p className="flex items-center gap-1 text-muted-foreground">
-              <CalendarIcon className="size-4" /> Lançamento
-            </p>
-            <p>
-              {formatReleaseDate(movie.release_date, { dateStyle: "medium" })}
-            </p>
-          </div>
-          <div>
-            <p className="flex items-center gap-1 text-muted-foreground">
-              <StarIcon className="size-4" /> Avaliação média
-            </p>
-            <p>
-              {formatAverageVote(movie.vote_average, {
-                fractionalSecondDigits: 1,
-              })}
-            </p>
-          </div>
-          <div>
-            <p className="flex items-center gap-1 text-muted-foreground">
-              <TimerIcon className="size-4" /> Duração do filme
-            </p>
-            <p>{formatRuntime(movie.runtime)}</p>
+          {movie.overview && <p className="line-clamp-3">{movie.overview}</p>}
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div>
+              <p className="flex items-center gap-1 text-muted-foreground">
+                <CalendarIcon className="size-4" /> Lançamento
+              </p>
+              <p>
+                {formatReleaseDate(movie.release_date, { dateStyle: "medium" })}
+              </p>
+            </div>
+            <div>
+              <p className="flex items-center gap-1 text-muted-foreground">
+                <StarIcon className="size-4" /> Avaliação média
+              </p>
+              <p>{formatAverageVote(movie.vote_average)} de 10.</p>
+            </div>
+            <div>
+              <p className="flex items-center gap-1 text-muted-foreground">
+                <TimerIcon className="size-4" /> Duração do filme
+              </p>
+              <p>{formatRuntime(movie.runtime)}</p>
+            </div>
           </div>
         </div>
       </div>

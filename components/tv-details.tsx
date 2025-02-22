@@ -5,7 +5,12 @@ import { notFound } from "next/navigation";
 import { getTv } from "@/utils/fetch-data";
 import { formatAverageVote, formatReleaseDate } from "@/utils/format-values";
 
-import { CalendarIcon, InfoIcon, StarIcon } from "lucide-react";
+import {
+  CalendarIcon,
+  ChevronLeftIcon,
+  InfoIcon,
+  StarIcon,
+} from "lucide-react";
 
 export async function TvDetails({ tvId }: { tvId: string }) {
   const tv = await getTv(tvId, "details");
@@ -26,17 +31,27 @@ export async function TvDetails({ tvId }: { tvId: string }) {
       </div>
 
       <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 space-y-4 relative">
-        <div className="relative aspect-3/4 max-w-64 w-64 hidden md:block">
+        <div className="relative aspect-3/4 max-w-64 w-64 rounded-md overflow-clip hidden md:block">
           <Image
-            src={`https://image.tmdb.org/t/p/w300/${tv.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
             alt={tv.name}
-            className="rounded-md shadow-lg"
+            className="bg-muted object-cover"
             sizes="30vw"
             fill
           />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 flex-1">
+          <div className="hidden md:block absolute -top-12 left-4">
+            <Link
+              href="/"
+              className="flex items-center gap-4 text-sm w-64 h-10 px-4 py-2 rounded-sm bg-background shadow"
+            >
+              <ChevronLeftIcon className="size-4" />
+              Voltar a página inicial
+            </Link>
+          </div>
+
           {tv.genres && (
             <div className="flex gap-2 flex-wrap">
               {tv.genres.map((genre) => (
@@ -71,11 +86,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
               <p className="flex items-center gap-1 text-muted-foreground">
                 <StarIcon className="size-4" /> Avaliação média
               </p>
-              <p>
-                {formatAverageVote(tv.vote_average, {
-                  fractionalSecondDigits: 1,
-                })}
-              </p>
+              <p>{formatAverageVote(tv.vote_average)} de 10.</p>
             </div>
             <div>
               <p className="flex items-center gap-1 text-muted-foreground">

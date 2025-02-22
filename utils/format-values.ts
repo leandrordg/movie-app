@@ -9,7 +9,7 @@ export function formatAverageVote(
   vote: number,
   opts?: Intl.DateTimeFormatOptions
 ) {
-  return new Intl.NumberFormat("pt-BR", opts).format(vote);
+  return new Intl.NumberFormat("pt-BR", opts).format(Number(vote.toFixed(1)));
 }
 
 export function formatRuntime(runtime: number) {

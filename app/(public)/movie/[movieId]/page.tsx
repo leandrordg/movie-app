@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { HeaderFallback } from "@/components/header-fallback";
+import { DetailsFallback } from "@/components/details-fallback";
 import { MovieDetails } from "@/components/movie-details";
 
 interface Props {
@@ -12,7 +12,7 @@ export default async function MoviePage({ params }: Props) {
 
   return (
     <main>
-      <Suspense fallback={<HeaderFallback />}>
+      <Suspense fallback={<DetailsFallback />}>
         <MovieDetails movieId={movieId} />
       </Suspense>
     </main>
