@@ -13,7 +13,12 @@ export function formatAverageVote(
 }
 
 export function formatRuntime(runtime: number) {
+  if (runtime === null) return "N/A";
+  
   const hours = Math.floor(runtime / 60);
+
+  if (hours === 0) return runtime + "min";
+
   const minutes = runtime % 60;
   return new Intl.NumberFormat("pt-BR").format(hours) + "h" + minutes + "min";
 }

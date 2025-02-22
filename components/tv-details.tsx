@@ -5,12 +5,7 @@ import { notFound } from "next/navigation";
 import { getTv } from "@/utils/fetch-data";
 import { formatAverageVote, formatReleaseDate } from "@/utils/format-values";
 
-import {
-  CalendarIcon,
-  ChevronLeftIcon,
-  InfoIcon,
-  StarIcon,
-} from "lucide-react";
+import { CalendarIcon, InfoIcon, StarIcon } from "lucide-react";
 
 export async function TvDetails({ tvId }: { tvId: string }) {
   const tv = await getTv(tvId, "details");
@@ -19,19 +14,22 @@ export async function TvDetails({ tvId }: { tvId: string }) {
 
   return (
     <div>
-      <div className="relative w-full h-64 md:h-96">
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${tv.backdrop_path}`}
-          alt={tv.name}
-          className="bg-muted object-cover"
-          sizes="90vw"
-          priority
-          fill
-        />
+      <div className="absolute inset-0 h-64 md:h-96 -z-10">
+        <div className="relative w-full h-64 md:h-96">
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${tv.backdrop_path}`}
+            alt={tv.name}
+            className="bg-muted object-cover"
+            sizes="90vw"
+            priority
+            fill
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
       </div>
 
-      <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 space-y-4 relative">
-        <div className="relative aspect-3/4 max-w-64 w-64 rounded-md overflow-clip hidden md:block">
+      <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 relative">
+        <div className="relative aspect-3/5 w-72 max-w-72 rounded-md overflow-clip hidden md:block shadow">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
             alt={tv.name}
@@ -41,23 +39,13 @@ export async function TvDetails({ tvId }: { tvId: string }) {
           />
         </div>
 
-        <div className="space-y-4 flex-1">
-          <div className="hidden md:block absolute -top-12 left-4">
-            <Link
-              href="/"
-              className="flex items-center gap-4 text-sm w-64 h-10 px-4 py-2 rounded-sm bg-background shadow"
-            >
-              <ChevronLeftIcon className="size-4" />
-              Voltar a página inicial
-            </Link>
-          </div>
-
+        <div className="space-y-4 md:pt-12 flex-1">
           {tv.genres && (
             <div className="flex gap-2 flex-wrap">
               {tv.genres.map((genre) => (
                 <div
                   key={genre.id}
-                  className="text-xs border border-muted rounded-md px-2 py-0.5"
+                  className="text-xs border bg-muted border-muted rounded-md px-2 py-0.5"
                 >
                   {genre.name}
                 </div>
@@ -104,8 +92,11 @@ export async function TvDetails({ tvId }: { tvId: string }) {
 
         <div className="flex flex-nowrap gap-2 overflow-x-auto scrollbar pb-4 snap-x snap-mandatory">
           {tv.seasons.map((season) => (
-            <Link key={season.id} href={`/tv/${tvId}/season/${season.id}`}>
-              <div className="aspect-3/4 w-64 max-w-64 relative shrink-0 group cursor-pointer snap-end">
+            <Link
+              key={season.id}
+              href={`/tv/${tvId}/season/${season.season_number}`}
+            >
+              <div className="aspect-3/5 w-72 max-w-72 relative shrink-0 group cursor-pointer snap-end">
                 <Image
                   src={`https://image.tmdb.org/t/p/w300/${season.poster_path}`}
                   className="group-hover:scale-105 transition-transform duration-200 bg-muted"

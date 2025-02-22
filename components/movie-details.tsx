@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getMovie } from "@/utils/fetch-data";
@@ -9,12 +8,7 @@ import {
   formatRuntime,
 } from "@/utils/format-values";
 
-import {
-  CalendarIcon,
-  ChevronLeftIcon,
-  StarIcon,
-  TimerIcon,
-} from "lucide-react";
+import { CalendarIcon, StarIcon, TimerIcon } from "lucide-react";
 
 export async function MovieDetails({ movieId }: { movieId: string }) {
   const movie = await getMovie(movieId, "details");
@@ -23,7 +17,7 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
 
   return (
     <div>
-      <div className="relative w-full h-64 md:h-96">
+      <div className="relative w-full h-48 md:h-72">
         <Image
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           alt={movie.title}
@@ -34,8 +28,8 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
         />
       </div>
 
-      <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 space-y-4 relative">
-        <div className="relative aspect-3/4 max-w-64 w-64 rounded-md overflow-clip hidden md:block">
+      <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 relative">
+        <div className="relative aspect-3/5 w-72 max-w-72 rounded-md overflow-clip hidden md:block shadow">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.title}
@@ -45,17 +39,7 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
           />
         </div>
 
-        <div className="space-y-4 flex-1">
-          <div className="hidden md:block absolute -top-12 left-4">
-            <Link
-              href="/"
-              className="flex items-center gap-4 text-sm w-64 h-10 px-4 py-2 rounded-sm bg-background shadow"
-            >
-              <ChevronLeftIcon className="size-4" />
-              Voltar a página inicial
-            </Link>
-          </div>
-
+        <div className="space-y-4 md:pt-12 flex-1">
           {movie.genres && (
             <div className="flex gap-2 flex-wrap">
               {movie.genres.map((genre) => (

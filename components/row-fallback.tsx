@@ -8,7 +8,7 @@ export function RowFallback({ length = 1 }: { length?: number }) {
         {Array.from({ length: mockItemsLength }).map((_, index) => (
           <div
             key={index}
-            className="aspect-3/4 w-64 max-w-64 relative shrink-0 bg-muted animate-pulse"
+            className="aspect-3/5 w-72 max-w-72 relative shrink-0 bg-muted animate-pulse"
           />
         ))}
       </div>

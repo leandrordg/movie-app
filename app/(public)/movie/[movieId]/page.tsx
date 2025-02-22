@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
-import { DetailsFallback } from "@/components/details-fallback";
 import { MovieDetails } from "@/components/movie-details";
+import { MovieFallback } from "@/components/movie-fallback";
 
 interface Props {
   params: Promise<{ movieId: string }>;
@@ -12,7 +12,7 @@ export default async function MoviePage({ params }: Props) {
 
   return (
     <main>
-      <Suspense fallback={<DetailsFallback />}>
+      <Suspense fallback={<MovieFallback />}>
         <MovieDetails movieId={movieId} />
       </Suspense>
     </main>
