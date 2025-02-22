@@ -8,7 +8,7 @@ export function TvCard({ tv }: { tv: Tv }) {
         {tv.poster_path ? (
           <Image
             src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
-            className="group-hover:scale-105 transition-transform duration-200 bg-muted"
+            className="group-hover:scale-105 transition-transform duration-200 bg-muted pointer-events-none"
             loading="lazy"
             alt={tv.name}
             sizes="30vw"

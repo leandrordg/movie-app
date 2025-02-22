@@ -13,7 +13,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
   if (!tv) return notFound();
 
   return (
-    <div>
+    <div className="relative">
       <div className="absolute inset-0 h-64 md:h-96 -z-10">
         <div className="relative w-full h-64 md:h-96">
           {tv.backdrop_path && (
@@ -67,7 +67,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
 
           {tv.tagline && <p className="text-muted-foreground">{tv.tagline}</p>}
 
-          {tv.overview && <p className="line-clamp-3">{tv.overview}</p>}
+          {tv.overview && <p>{tv.overview}</p>}
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>

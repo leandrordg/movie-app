@@ -19,7 +19,7 @@ export async function SeasonDetails({
   if (!season) return notFound();
 
   return (
-    <div>
+    <div className="relative">
       <div className="absolute inset-0 h-64 md:h-96 -z-10">
         <div className="relative w-full h-64 md:h-96">
           {season.poster_path && (

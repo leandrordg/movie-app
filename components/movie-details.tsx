@@ -69,7 +69,7 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
             <p className="text-muted-foreground">{movie.tagline}</p>
           )}
 
-          {movie.overview && <p className="line-clamp-3">{movie.overview}</p>}
+          {movie.overview && <p>{movie.overview}</p>}
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>

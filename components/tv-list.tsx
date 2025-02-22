@@ -11,10 +11,10 @@ export async function TvList({ title, type }: Props) {
   const tvs = await getTvs(type);
 
   return (
-    <div className="space-y-4 py-12 pl-4">
-      <h1 className="text-lg font-medium">{title}</h1>
+    <div className="py-4">
+      <h1 className="text-2xl font-bold pl-4">{title}</h1>
 
-      <section className="flex flex-nowrap gap-2 overflow-x-auto scrollbar pb-4 snap-x snap-mandatory">
+      <section className="flex flex-nowrap gap-2 overflow-x-auto scrollbar p-4 snap-x snap-mandatory">
         {tvs.results.map((tv) => (
           <TvCard key={tv.id} tv={tv} />
         ))}

@@ -12,7 +12,7 @@ const options: RequestInit = {
 
 export const getDiscoverMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc",
+    "https://api.themoviedb.org/3/discover/movie?language=pt-BR",
     options
   );
 
@@ -34,7 +34,7 @@ export const getNowPlayingMovies = cache(async (): Promise<MoviesRequest> => {
 
 export const getPopularMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+    "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
     options
   );
 
@@ -77,3 +77,25 @@ export const getMovieDetails = cache(
     return data;
   }
 );
+
+export const getDayTrendingMovies = cache(async (): Promise<MoviesRequest> => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/trending/movie/day?language=pt-BR",
+    options
+  );
+
+  const data: MoviesRequest = await response.json();
+
+  return data;
+});
+
+export const getWeekTrendingMovies = cache(async (): Promise<MoviesRequest> => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/trending/movie/week?language=pt-BR",
+    options
+  );
+
+  const data: MoviesRequest = await response.json();
+
+  return data;
+});

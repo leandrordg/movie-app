@@ -1,16 +1,20 @@
 import {
+  getDayTrendingMovies,
   getDiscoverMovies,
   getMovieDetails,
   getNowPlayingMovies,
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
+  getWeekTrendingMovies,
 } from "@/hooks/movies";
 import {
+  getDayTrendingTvs,
   getDiscoverTvs,
   getPopularTvs,
   getTopRatedTvs,
   getTvDetails,
+  getWeekTrendingTvs,
 } from "@/hooks/tv";
 
 export async function getMovie(movieId: string, type: GetMovieType) {
@@ -39,6 +43,10 @@ export async function getMovies(type: GetMoviesType) {
       return await getTopRatedMovies();
     case "upcoming":
       return await getUpcomingMovies();
+    case "dayTrending":
+      return await getDayTrendingMovies();
+    case "weekTrending":
+      return await getWeekTrendingMovies();
   }
 }
 
@@ -50,5 +58,9 @@ export async function getTvs(type: GetTvsType) {
       return await getPopularTvs();
     case "topRated":
       return await getTopRatedTvs();
+    case "dayTrending":
+      return await getDayTrendingTvs();
+    case "weekTrending":
+      return await getWeekTrendingTvs();
   }
 }

@@ -53,3 +53,25 @@ export const getTvDetails = cache(async (tvId: string): Promise<TvDetails> => {
 
   return data;
 });
+
+export const getDayTrendingTvs = cache(async (): Promise<TvsRequest> => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/trending/tv/day?language=pt-BR",
+    options
+  );
+
+  const data: TvsRequest = await response.json();
+
+  return data;
+});
+
+export const getWeekTrendingTvs = cache(async (): Promise<TvsRequest> => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/trending/tv/week?language=pt-BR",
+    options
+  );
+
+  const data: TvsRequest = await response.json();
+
+  return data;
+});

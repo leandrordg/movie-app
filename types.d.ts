@@ -7,9 +7,16 @@ type GetMoviesType =
   | "nowPlaying"
   | "popular"
   | "topRated"
-  | "upcoming";
+  | "upcoming"
+  | "dayTrending"
+  | "weekTrending";
 
-type GetTvsType = "discover" | "popular" | "topRated";
+type GetTvsType =
+  | "discover"
+  | "popular"
+  | "topRated"
+  | "dayTrending"
+  | "weekTrending";
 
 interface MoviesRequest {
   page: number;

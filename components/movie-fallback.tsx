@@ -3,7 +3,7 @@ export function MovieFallback() {
 
   return (
     <div>
-      <div className="w-full h-64 md:h-96 bg-muted animate-pulse" />
+      <div className="w-full h-48 md:h-72 bg-muted animate-pulse" />
       <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 space-y-4 relative">
         <div className="aspect-3/5 w-72 max-w-72 rounded-md overflow-clip hidden md:block bg-muted animate-pulse" />
         <div className="space-y-4 flex-1">
