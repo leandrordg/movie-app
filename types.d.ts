@@ -42,6 +42,89 @@ interface Movie {
   vote_count: number;
 }
 
+interface Tv {
+  backdrop_path: string;
+  first_air_date: string;
+  genre_ids: number[];
+  id: number;
+  name: string;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface Season {
+  air_date: string;
+  episode_count: number;
+  id: number;
+  name: string;
+  overview: string;
+  poster_path: string;
+  season_number: number;
+}
+
+interface Episode {
+  air_date: string;
+  crew: {
+    department: string;
+    job: string;
+    credit_id: string;
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string;
+  }[];
+  episode_number: number;
+  guest_stars: {
+    character: string;
+    credit_id: string;
+    order: number;
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string;
+  }[];
+  name: string;
+  overview: string;
+  id: number;
+  production_code: string;
+  runtime: number;
+  season_number: number;
+  still_path: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface Person {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: string;
+  deathday: string;
+  gender: number;
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  known_for_department: string;
+  name: string;
+  place_of_birth: string;
+  popularity: number;
+  profile_path: string;
+}
+
 interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
@@ -87,22 +170,6 @@ interface MovieDetails {
   tagline: string;
   title: string;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
-interface Tv {
-  backdrop_path: string;
-  first_air_date: string;
-  genre_ids: number[];
-  id: number;
-  name: string;
-  origin_country: string[];
-  original_language: string;
-  original_name: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
   vote_average: number;
   vote_count: number;
 }
@@ -164,16 +231,7 @@ interface TvDetails {
     iso_3166_1: string;
     name: string;
   }[];
-  seasons: {
-    air_date: string;
-    episode_count: number;
-    id: number;
-    name: string;
-    overview: string;
-    poster_path: string;
-    season_number: number;
-    vote_average: number;
-  }[];
+  seasons: Season[];
   spoken_languages: {
     english_name: string;
     iso_639_1: string;
@@ -186,53 +244,6 @@ interface TvDetails {
   vote_count: number;
 }
 
-interface SeasonDetails {
-  _id: string;
-  air_date: string;
-  episodes: {
-    air_date: string;
-    episode_number: number;
-    episode_type: string;
-    id: number;
-    name: string;
-    overview: string;
-    production_code: string;
-    runtime: number;
-    season_number: number;
-    show_id: number;
-    still_path: string;
-    vote_average: number;
-    vote_count: number;
-    crew: {
-      department: string;
-      job: string;
-      credit_id: string;
-      adult: boolean;
-      gender: number;
-      id: number;
-      known_for_department: string;
-      name: string;
-      original_name: string;
-      popularity: number;
-      profile_path: string;
-    }[];
-    guest_stars: {
-      character: string;
-      credit_id: string;
-      order: number;
-      adult: boolean;
-      gender: number;
-      id: number;
-      known_for_department: string;
-      name: string;
-      original_name: string;
-      popularity: number;
-      profile_path: string;
-    }[];
-  }[];
-  name: string;
-  overview: string;
-  poster_path: string;
-  season_number: number;
-  vote_average: number;
+interface SeasonDetails extends Season {
+  episodes: Episode[];
 }

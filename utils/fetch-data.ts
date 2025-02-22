@@ -20,6 +20,13 @@ export async function getMovie(movieId: string, type: GetMovieType) {
   }
 }
 
+export async function getTv(tvId: string, type: GetTvType) {
+  switch (type) {
+    case "details":
+      return await getTvDetails(tvId);
+  }
+}
+
 export async function getMovies(type: GetMoviesType) {
   switch (type) {
     case "discover":
@@ -32,13 +39,6 @@ export async function getMovies(type: GetMoviesType) {
       return await getTopRatedMovies();
     case "upcoming":
       return await getUpcomingMovies();
-  }
-}
-
-export async function getTv(tvId: string, type: GetTvType) {
-  switch (type) {
-    case "details":
-      return await getTvDetails(tvId);
   }
 }
 

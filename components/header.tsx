@@ -7,7 +7,13 @@ export function Header() {
       <div className="flex items-center gap-4 p-4">
         <Link href="/">
           <div className="relative size-8">
-            <Image src="/logo.svg" alt="Logo" className="dark:invert" fill />
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              className="dark:invert"
+              priority
+              fill
+            />
           </div>
         </Link>
       </div>
