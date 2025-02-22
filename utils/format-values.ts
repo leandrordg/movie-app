@@ -2,6 +2,7 @@ export function formatReleaseDate(
   date: string,
   opts?: Intl.DateTimeFormatOptions
 ) {
+  if(!date) return "N/A";
   return new Intl.DateTimeFormat("pt-BR", opts).format(new Date(date));
 }
 

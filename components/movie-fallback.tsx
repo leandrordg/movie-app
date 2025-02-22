@@ -17,14 +17,14 @@ export function MovieFallback() {
 
       <div className="max-w-7xl mx-auto py-12 pl-4 space-y-4">
         <div className="w-3/4 sm:w-1/2 md:w-1/3 h-6 bg-muted rounded-md animate-pulse" />
-        <div className="flex flex-nowrap gap-2 overflow-x-auto scrollbar pb-4 snap-x snap-mandatory">
+        <section className="flex flex-nowrap gap-2 overflow-x-auto scrollbar pb-4 snap-x snap-mandatory">
           {Array.from({ length: mockItemsLength }).map((_, index) => (
             <div
               key={index}
               className="aspect-3/5 w-72 max-w-72 relative shrink-0 bg-muted animate-pulse"
             />
           ))}
-        </div>
+        </section>
       </div>
     </div>
   );

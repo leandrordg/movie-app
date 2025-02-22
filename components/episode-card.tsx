@@ -20,14 +20,20 @@ export function EpisodeCard({
     >
       <div className="bg-muted w-80 max-w-80 flex flex-col shrink-0 cursor-pointer snap-end group">
         <div className="relative w-full md:w-80 h-48 overflow-clip">
-          <Image
-            src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
-            alt={episode.name}
-            className="bg-muted object-cover group-hover:scale-105 transition-transform duration-200"
-            loading="lazy"
-            sizes="30vw"
-            fill
-          />
+          {episode.still_path ? (
+            <Image
+              src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
+              alt={episode.name}
+              className="bg-muted object-cover group-hover:scale-105 transition-transform duration-200"
+              loading="lazy"
+              sizes="30vw"
+              fill
+            />
+          ) : (
+            <div className="bg-muted w-full h-full flex items-center justify-center">
+              <p className="text-sm text-muted-foreground">Sem imagem</p>
+            </div>
+          )}
         </div>
 
         <div className="p-4 space-y-2">

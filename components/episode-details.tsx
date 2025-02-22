@@ -30,14 +30,22 @@ export async function EpisodeDetails({
     <div>
       <div className="max-w-7xl mx-auto md:px-4">
         <div className="relative aspect-6/3 md:aspect-6/2 md:rounded-md overflow-clip shadow">
-          <Image
-            src={`https://image.tmdb.org/t/p/original/${episode.still_path}`}
-            alt={episode.name}
-            className="bg-muted object-cover"
-            sizes="80vw"
-            priority
-            fill
-          />
+          {episode.still_path ? (
+            <Image
+              src={`https://image.tmdb.org/t/p/original/${episode.still_path}`}
+              alt={episode.name}
+              className="bg-muted object-cover"
+              sizes="80vw"
+              priority
+              fill
+            />
+          ) : (
+            <div className="bg-muted w-full h-full flex items-center justify-center">
+              <p className="text-balance text-xs text-muted-foreground">
+                Sem imagem
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -98,7 +106,7 @@ export async function EpisodeDetails({
                       />
                     )}
 
-                    <div className="flex flex-col h-full justify-end bg-gradient-to-b from-transparent to-background p-4 z-20">
+                    <div className="flex flex-col h-full justify-end bg-gradient-to-b from-background/30 to-background p-4 z-20">
                       <h3 className="text-lg font-bold text-balance">
                         {person.name}
                       </h3>

@@ -18,25 +18,33 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
   return (
     <div>
       <div className="relative w-full h-48 md:h-72">
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-          alt={movie.title}
-          className="bg-muted object-cover"
-          sizes="90vw"
-          priority
-          fill
-        />
+        {movie.backdrop_path && (
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+            alt={movie.title}
+            className="bg-muted object-cover"
+            sizes="90vw"
+            priority
+            fill
+          />
+        )}
       </div>
 
       <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 relative">
         <div className="relative aspect-3/5 w-72 max-w-72 rounded-md overflow-clip hidden md:block shadow">
-          <Image
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.title}
-            className="bg-muted object-cover"
-            sizes="30vw"
-            fill
-          />
+          {movie.poster_path ? (
+            <Image
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+              className="bg-muted object-cover"
+              sizes="30vw"
+              fill
+            />
+          ) : (
+            <div className="bg-muted w-full h-full flex items-center justify-center">
+              <p className="text-sm text-muted-foreground">Sem imagem</p>
+            </div>
+          )}
         </div>
 
         <div className="space-y-4 md:pt-12 flex-1">
