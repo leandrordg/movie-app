@@ -5,6 +5,7 @@ import { getTv } from "@/utils/fetch-data";
 import { formatAverageVote, formatReleaseDate } from "@/utils/format-values";
 
 import { SeasonCard } from "@/components/season-card";
+import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, InfoIcon, StarIcon } from "lucide-react";
 
 export async function TvDetails({ tvId }: { tvId: string }) {
@@ -51,12 +52,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
           {tv.genres && (
             <div className="flex gap-2 flex-wrap">
               {tv.genres.map((genre) => (
-                <div
-                  key={genre.id}
-                  className="text-xs border bg-muted border-muted rounded-md px-2 py-0.5"
-                >
-                  {genre.name}
-                </div>
+                <Badge key={genre.id}>{genre.name}</Badge>
               ))}
             </div>
           )}
@@ -65,7 +61,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
             {tv.name}
           </h1>
 
-          {tv.tagline && <p className="text-muted-foreground">{tv.tagline}</p>}
+          {tv.tagline && <p>{tv.tagline}</p>}
 
           {tv.overview && <p>{tv.overview}</p>}
 
@@ -75,7 +71,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
                 <CalendarIcon className="size-4" /> Data de lançamento
               </p>
               <p>
-                {formatReleaseDate(tv.first_air_date, { dateStyle: "medium" })}
+                {formatReleaseDate(tv.first_air_date, { dateStyle: "long" })}
               </p>
             </div>
             <div>

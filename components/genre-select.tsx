@@ -2,6 +2,8 @@
 
 import { useQueryState } from "nuqs";
 
+import { Button } from "@/components/ui/button";
+
 export function GenreSelect({ genres }: { genres: Genre[] }) {
   const [genreId, setGenreId] = useQueryState("genreId", { shallow: false });
 
@@ -23,17 +25,13 @@ export function GenreSelect({ genres }: { genres: Genre[] }) {
     const activeGenre = genreId === genre.id;
 
     return (
-      <button
+      <Button
         key={genre.id}
-        className={`px-4 py-1 border rounded-md shadow text-sm shrink-0 cursor-pointer transition-colors ${
-          activeGenre
-            ? "bg-blue-900 hover:bg-blue-900/90 border-blue-900"
-            : "bg-muted hover:bg-muted/90 border-muted"
-        }`}
+        variant={activeGenre ? "active" : "outline"}
         onClick={() => handleClick(genre.id)}
       >
         {genre.name}
-      </button>
+      </Button>
     );
   });
 }

@@ -64,7 +64,7 @@ export async function EpisodeDetails({
           <div className="flex items-center gap-2">
             <CalendarIcon className="size-4" />
             <p className="text-sm text-muted-foreground">
-              {formatReleaseDate(episode.air_date, { dateStyle: "long" })}
+              {formatReleaseDate(episode.air_date, { dateStyle: "long" })}.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export async function EpisodeDetails({
               Elenco
             </h3>
 
-            <section className="flex flex-nowrap gap-4 overflow-x-auto scrollbar snap-mandatory snap-x pb-4">
+            <section className="flex flex-nowrap gap-4 overflow-x-auto snap-mandatory snap-x pb-4">
               {episode.guest_stars.map((person) => (
                 <Link key={person.credit_id} href={`/person/${person.id}`}>
                   <div className="flex flex-col gap-2 relative aspect-2/3 max-h-64 h-64 rounded-md overflow-clip snap-end">
@@ -106,7 +106,7 @@ export async function EpisodeDetails({
                       />
                     )}
 
-                    <div className="flex flex-col h-full justify-end bg-gradient-to-b from-background/30 to-background p-4 z-20">
+                    <div className="flex flex-col h-full justify-end bg-gradient-to-b from-transparent via-background/10 to-background p-4 z-20">
                       <h3 className="text-lg font-bold text-balance">
                         {person.name}
                       </h3>

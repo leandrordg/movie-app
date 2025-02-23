@@ -59,12 +59,12 @@ export async function SeasonDetails({
           </h1>
 
           <div className="flex flex-wrap gap-4">
-            <p className="flex items-center gap-2 text-muted-foreground">
+            <p className="flex items-center gap-2">
               <CalendarIcon className="size-4" />
-              {formatReleaseDate(season.air_date, { dateStyle: "long" })}
+              {formatReleaseDate(season.air_date, { dateStyle: "long" })}.
             </p>
 
-            <p className="flex items-center gap-2 text-muted-foreground">
+            <p className="flex items-center gap-2">
               <TvIcon className="size-4" />
               {season.episodes.length} episódios.
             </p>
@@ -80,7 +80,7 @@ export async function SeasonDetails({
             Episódios ({season.episodes.length})
           </h3>
 
-          <section className="flex flex-nowrap gap-2 overflow-x-auto scrollbar pb-4  snap-x snap-mandatory">
+          <section className="flex flex-nowrap gap-2 overflow-x-auto pb-4 snap-x snap-mandatory">
             {season.episodes.map((episode) => (
               <EpisodeCard
                 key={episode.id}

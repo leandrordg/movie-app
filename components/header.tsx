@@ -4,7 +4,8 @@ import Link from "next/link";
 import { UserRoundIcon } from "lucide-react";
 
 import { HeaderLink } from "@/components/header-link";
-import { SearchBox } from "@/components/search-box";
+import { SearchBoxDialog } from "@/components/search-box-dialog";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   return (
@@ -30,13 +31,13 @@ export function Header() {
         </div>
 
         <div className="flex-1">
-          <SearchBox />
+          <SearchBoxDialog />
         </div>
 
         <div className="flex items-center gap-4 lg:flex-1 justify-end">
-          <div className="size-8 rounded-md flex items-center justify-center bg-muted hover:bg-muted/90 cursor-pointer">
+          <Button variant="outline" size="icon">
             <UserRoundIcon className="size-4" />
-          </div>
+          </Button>
         </div>
       </div>
 
