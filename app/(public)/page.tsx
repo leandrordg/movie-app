@@ -7,10 +7,11 @@ import { TvList } from "@/components/tv-list";
 export default function HomePage() {
   return (
     <main>
-      <Suspense fallback={<RowFallback length={1} />}>
+      <Suspense fallback={<RowFallback length={2} />}>
         <TvList title="Séries em Alta Hoje" type="dayTrending" />
         <MovieList title="Filmes em Alta Hoje" type="dayTrending" />
       </Suspense>
+
       <Suspense fallback={<RowFallback length={2} />}>
         <TvList title="Séries Populares" type="popular" />
         <MovieList title="Filmes em Destaque" type="popular" />

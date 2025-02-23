@@ -23,5 +23,5 @@ body {
 }
 
 .scrollbar {
-  @apply scrollbar-thin scrollbar-thumb-muted-foreground scrollbar-track-muted;
+  @apply scrollbar-thin scrollbar-thumb-foreground scrollbar-track-muted;
 }

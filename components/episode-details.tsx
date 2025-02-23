@@ -28,7 +28,7 @@ export async function EpisodeDetails({
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto md:px-4">
+      <div className="max-w-7xl mx-auto md:p-4">
         <div className="relative aspect-6/3 md:aspect-6/2 md:rounded-md overflow-clip shadow">
           {episode.still_path ? (
             <Image

@@ -32,6 +32,10 @@ interface TvsRequest {
   total_results: number;
 }
 
+interface GenresRequest {
+  genres: Genre[];
+}
+
 interface Movie {
   adult: boolean;
   backdrop_path: string;
@@ -130,6 +134,11 @@ interface Person {
   place_of_birth: string;
   popularity: number;
   profile_path: string;
+}
+
+interface Genre {
+  id: string;
+  name: string;
 }
 
 interface MovieDetails {

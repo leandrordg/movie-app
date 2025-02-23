@@ -31,10 +31,10 @@ export async function getTv(tvId: string, type: GetTvType) {
   }
 }
 
-export async function getMovies(type: GetMoviesType) {
+export async function getMovies(type: GetMoviesType, genreId?: string) {
   switch (type) {
     case "discover":
-      return await getDiscoverMovies();
+      return await getDiscoverMovies(genreId);
     case "nowPlaying":
       return await getNowPlayingMovies();
     case "popular":

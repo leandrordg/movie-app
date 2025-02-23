@@ -10,20 +10,24 @@ const options: RequestInit = {
   },
 };
 
-export const getDiscoverMovies = cache(async (): Promise<MoviesRequest> => {
-  const response = await fetch(
-    "https://api.themoviedb.org/3/discover/movie?language=pt-BR",
-    options
-  );
+export const getDiscoverMovies = cache(
+  async (genreId?: string): Promise<MoviesRequest> => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?language=pt-BR${
+        genreId && `&with_genres=${genreId}`
+      }&page=1`,
+      options
+    );
 
-  const data: MoviesRequest = await response.json();
+    const data: MoviesRequest = await response.json();
 
-  return data;
-});
+    return data;
+  }
+);
 
 export const getNowPlayingMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1",
+    `https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1`,
     options
   );
 
@@ -34,7 +38,7 @@ export const getNowPlayingMovies = cache(async (): Promise<MoviesRequest> => {
 
 export const getPopularMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
+    `https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1`,
     options
   );
 
@@ -45,7 +49,7 @@ export const getPopularMovies = cache(async (): Promise<MoviesRequest> => {
 
 export const getTopRatedMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1",
+    `https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1`,
     options
   );
 
@@ -56,7 +60,7 @@ export const getTopRatedMovies = cache(async (): Promise<MoviesRequest> => {
 
 export const getUpcomingMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?language=pt-BR&page=1",
+    `https://api.themoviedb.org/3/movie/upcoming?language=pt-BR&page=1`,
     options
   );
 
@@ -80,7 +84,7 @@ export const getMovieDetails = cache(
 
 export const getDayTrendingMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/trending/movie/day?language=pt-BR",
+    `https://api.themoviedb.org/3/trending/movie/day?language=pt-BR`,
     options
   );
 
@@ -91,7 +95,7 @@ export const getDayTrendingMovies = cache(async (): Promise<MoviesRequest> => {
 
 export const getWeekTrendingMovies = cache(async (): Promise<MoviesRequest> => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/trending/movie/week?language=pt-BR",
+    `https://api.themoviedb.org/3/trending/movie/week?language=pt-BR`,
     options
   );
 

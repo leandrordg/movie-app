@@ -1,14 +1,19 @@
 export function RowFallback({ length = 1 }: { length?: number }) {
-  const mockItemsLength = 12;
+  const randomScreenWidth = Math.floor(Math.random() * 50) + 250;
 
-  return Array.from({ length }).map((_, index) => (
-    <div key={index} className="space-y-4 py-12 pl-4">
-      <div className="w-3/4 sm:w-1/2 md:w-1/3 h-6 bg-muted rounded-md animate-pulse" />
-      <section className="flex flex-nowrap gap-2 overflow-x-hidden">
-        {Array.from({ length: mockItemsLength }).map((_, index) => (
+  return Array.from({ length }).map((_, rowIndex) => (
+    <div key={rowIndex} className="py-4">
+      <div className="px-4">
+        <div
+          style={{ width: `${randomScreenWidth}px` }}
+          className="h-10 bg-muted rounded-md animate-pulse"
+        />
+      </div>
+      <section className="flex gap-2 overflow-x-hidden p-4">
+        {Array.from({ length: 12 }).map((_, itemIndex) => (
           <div
-            key={index}
-            className="aspect-3/5 w-72 max-w-72 relative shrink-0 bg-muted animate-pulse"
+            key={itemIndex}
+            className="aspect-3/5 w-72 shrink-0 bg-muted animate-pulse"
           />
         ))}
       </section>
