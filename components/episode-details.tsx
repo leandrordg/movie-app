@@ -27,7 +27,7 @@ export async function EpisodeDetails({
   if (!episode) return notFound();
 
   return (
-    <div>
+    <div className="pt-16">
       <div className="max-w-7xl mx-auto md:p-4">
         <div className="relative aspect-6/3 md:aspect-6/2 md:rounded-md overflow-clip shadow">
           {episode.still_path ? (
@@ -78,7 +78,7 @@ export async function EpisodeDetails({
           <div className="flex items-center gap-2">
             <StarIcon className="size-4" />
             <p className="text-sm text-muted-foreground">
-              {formatAverageVote(episode.vote_average)} de 10.
+              {formatAverageVote(episode.vote_average)}
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export async function EpisodeDetails({
             <section className="flex flex-nowrap gap-4 overflow-x-auto snap-mandatory snap-x pb-4">
               {episode.guest_stars.map((person) => (
                 <Link key={person.credit_id} href={`/person/${person.id}`}>
-                  <div className="flex flex-col gap-2 relative aspect-2/3 max-h-64 h-64 rounded-md overflow-clip snap-end">
+                  <div className="flex flex-col gap-2 relative aspect-3/5 max-h-72 h-72 rounded-md overflow-clip snap-end">
                     {person.profile_path && (
                       <Image
                         src={`https://image.tmdb.org/t/p/w185/${person.profile_path}`}
@@ -106,11 +106,11 @@ export async function EpisodeDetails({
                       />
                     )}
 
-                    <div className="flex flex-col h-full justify-end bg-gradient-to-b from-transparent via-background/10 to-background p-4 z-20">
+                    <div className="flex flex-col h-full justify-end bg-gradient-to-b from-transparent via-background/30 to-background p-4 z-20">
                       <h3 className="text-lg font-bold text-balance">
                         {person.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm">
                         {person.character}
                       </p>
                     </div>

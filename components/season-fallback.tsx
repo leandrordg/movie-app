@@ -3,7 +3,7 @@ export function SeasonFallback() {
 
   return (
     <div className="relative">
-      <div className="absolute inset-0 w-full h-64 md:h-96 bg-gradient-to-b from-transparent via-muted/80 to-muted animate-pulse" />
+      <div className="absolute inset-0 w-full h-64 md:h-96 bg-gradient-to-b from-transparent to-background/70 animate-pulse" />
 
       <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 relative">
         <div className="hidden md:block aspect-3/5 w-72 rounded-md bg-muted animate-pulse" />

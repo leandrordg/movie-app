@@ -1,9 +1,10 @@
 import {
   getDayTrendingMovies,
   getDiscoverMovies,
-  getMovieDetails,
   getNowPlayingMovies,
   getPopularMovies,
+  getRecomendationsMovies,
+  getSimilarMovies,
   getTopRatedMovies,
   getUpcomingMovies,
   getWeekTrendingMovies,
@@ -13,25 +14,14 @@ import {
   getDiscoverTvs,
   getPopularTvs,
   getTopRatedTvs,
-  getTvDetails,
   getWeekTrendingTvs,
 } from "@/hooks/tv";
 
-export async function getMovie(movieId: string, type: GetMovieType) {
-  switch (type) {
-    case "details":
-      return await getMovieDetails(movieId);
-  }
-}
-
-export async function getTv(tvId: string, type: GetTvType) {
-  switch (type) {
-    case "details":
-      return await getTvDetails(tvId);
-  }
-}
-
-export async function getMovies(type: GetMoviesType, genreId?: string) {
+export async function getMovies(
+  type: GetMoviesType,
+  genreId?: string,
+  movieId?: string
+) {
   switch (type) {
     case "discover":
       return await getDiscoverMovies(genreId);
@@ -47,6 +37,10 @@ export async function getMovies(type: GetMoviesType, genreId?: string) {
       return await getDayTrendingMovies();
     case "weekTrending":
       return await getWeekTrendingMovies();
+    case "recommendations":
+      return await getRecomendationsMovies(movieId);
+    case "similar":
+      return await getSimilarMovies(movieId);
   }
 }
 

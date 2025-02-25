@@ -1,7 +1,3 @@
-type GetMovieType = "details";
-
-type GetTvType = "details";
-
 type GetMoviesType =
   | "discover"
   | "nowPlaying"
@@ -9,7 +5,9 @@ type GetMoviesType =
   | "topRated"
   | "upcoming"
   | "dayTrending"
-  | "weekTrending";
+  | "weekTrending"
+  | "recommendations"
+  | "similar";
 
 type GetTvsType =
   | "discover"
@@ -34,6 +32,13 @@ interface TvsRequest {
 
 interface GenresRequest {
   genres: Genre[];
+}
+
+interface WatchProvidersRequest {
+  id: number;
+  results: {
+    [countryCode: string]: CountryProviders;
+  };
 }
 
 interface Movie {
@@ -262,4 +267,17 @@ interface TvDetails {
 
 interface SeasonDetails extends Season {
   episodes: Episode[];
+}
+
+interface WatchProvider {
+  logo_path: string;
+  provider_id: number;
+  provider_name: string;
+  display_priority: number;
+}
+
+interface CountryProviders {
+  link: string;
+  buy?: WatchProvider[];
+  rent?: WatchProvider[];
 }

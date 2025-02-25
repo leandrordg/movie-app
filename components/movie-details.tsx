@@ -1,23 +1,33 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { getMovie } from "@/utils/fetch-data";
+import { getMovieDetails } from "@/hooks/movies";
+import { getWatchProviders } from "@/hooks/watch-providers";
 import {
   formatAverageVote,
   formatReleaseDate,
   formatRuntime,
 } from "@/utils/format-values";
 
-import { CalendarIcon, StarIcon, TimerIcon } from "lucide-react";
+import {
+  CalendarIcon,
+  ShoppingBasketIcon,
+  StarIcon,
+  StoreIcon,
+  TimerIcon,
+} from "lucide-react";
 
 export async function MovieDetails({ movieId }: { movieId: string }) {
-  const movie = await getMovie(movieId, "details");
+  const movie = await getMovieDetails(movieId);
+  const watchProviders = await getWatchProviders(movieId);
 
   if (!movie) return notFound();
 
+  const currentProvider = watchProviders.results["BR"];
+
   return (
     <div>
-      <div className="relative w-full h-48 md:h-72">
+      <div className="relative w-full h-48 md:h-72 pt-16">
         {movie.backdrop_path && (
           <Image
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
@@ -84,7 +94,7 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
               <p className="flex items-center gap-1 text-muted-foreground">
                 <StarIcon className="size-4" /> Avaliação média
               </p>
-              <p>{formatAverageVote(movie.vote_average)} de 10.</p>
+              <p>{formatAverageVote(movie.vote_average)}</p>
             </div>
             <div>
               <p className="flex items-center gap-1 text-muted-foreground">
@@ -95,6 +105,74 @@ export async function MovieDetails({ movieId }: { movieId: string }) {
           </div>
         </div>
       </div>
+
+      {currentProvider && (
+        <div className="max-w-7xl mx-auto py-12 px-4 space-y-8">
+          <h1 className="text-2xl font-bold tracking-tighter text-balance">
+            Assistir em:
+          </h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x rounded-md border overflow-clip">
+            {currentProvider.buy && (
+              <div>
+                <div className="flex items-center gap-2 font-medium p-4 border-b">
+                  <StoreIcon className="size-4" />
+                  Comprar filme
+                </div>
+
+                <ul className="grid grid-cols-1">
+                  {currentProvider.buy.map((provider) => (
+                    <li
+                      key={provider.provider_id}
+                      className="flex items-center gap-4 font-medium hover:bg-muted p-4"
+                    >
+                      <div className="relative size-8 rounded-md border overflow-clip">
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w92/${provider.logo_path}`}
+                          alt={provider.provider_name}
+                          className="bg-muted object-cover"
+                          priority
+                          fill
+                        />
+                      </div>
+                      {provider.provider_name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {currentProvider.rent && (
+              <div>
+                <div className="flex items-center gap-2 font-medium p-4 border-b not-md:border-t">
+                  <ShoppingBasketIcon className="size-4" />
+                  Alugar filme
+                </div>
+
+                <ul className="grid grid-cols-1">
+                  {currentProvider.rent.map((provider) => (
+                    <li
+                      key={provider.provider_id}
+                      className="flex items-center gap-4 font-medium p-4 hover:bg-muted"
+                    >
+                      <div className="relative size-8 rounded-md border overflow-clip">
+                        <Image
+                          src={`https://image.tmdb.org/t/p/w92/${provider.logo_path}`}
+                          alt={provider.provider_name}
+                          className="bg-muted object-cover"
+                          priority
+                          fill
+                        />
+                      </div>
+                      {provider.provider_name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

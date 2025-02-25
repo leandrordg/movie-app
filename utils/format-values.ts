@@ -10,7 +10,11 @@ export function formatAverageVote(
   vote: number,
   opts?: Intl.DateTimeFormatOptions
 ) {
-  return new Intl.NumberFormat("pt-BR", opts).format(Number(vote.toFixed(1)));
+  const averageVote = new Intl.NumberFormat("pt-BR", opts).format(
+    Number(vote.toFixed(1))
+  );
+
+  return `${averageVote} de 10`;
 }
 
 export function formatRuntime(runtime: number) {

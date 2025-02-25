@@ -103,3 +103,33 @@ export const getWeekTrendingMovies = cache(async (): Promise<MoviesRequest> => {
 
   return data;
 });
+
+export const getRecomendationsMovies = cache(
+  async (movieId?: string): Promise<MoviesRequest> => {
+    if (!movieId) throw new Error("movieId is required");
+
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=pt-BR`,
+      options
+    );
+
+    const data: MoviesRequest = await response.json();
+
+    return data;
+  }
+);
+
+export const getSimilarMovies = cache(
+  async (movieId?: string): Promise<MoviesRequest> => {
+    if (!movieId) throw new Error("movieId is required");
+
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/similar?language=pt-BR`,
+      options
+    );
+
+    const data: MoviesRequest = await response.json();
+
+    return data;
+  }
+);

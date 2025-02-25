@@ -6,11 +6,12 @@ import { formatGenreIds } from "@/utils/format-values";
 interface Props {
   title?: string;
   type: GetMoviesType;
+  movieId?: string;
   genreId?: string;
 }
 
-export async function MovieList({ title, type, genreId }: Props) {
-  const movies = await getMovies(type, genreId);
+export async function MovieList({ title, type, genreId, movieId }: Props) {
+  const movies = await getMovies(type, genreId, movieId);
 
   return (
     <div className="py-4">

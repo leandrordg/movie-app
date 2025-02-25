@@ -13,7 +13,7 @@ export default async function MoviesPage({ searchParams }: Props) {
   const { genreId } = await searchParams;
 
   return (
-    <main>
+    <main className="pt-16">
       <Suspense fallback={<GenreFallback />}>
         <GenreSelector />
       </Suspense>

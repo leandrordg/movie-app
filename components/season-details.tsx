@@ -19,7 +19,7 @@ export async function SeasonDetails({
   if (!season) return notFound();
 
   return (
-    <div className="relative">
+    <div className="relative pt-16">
       <div className="absolute inset-0 h-64 md:h-96 -z-10">
         <div className="relative w-full h-64 md:h-96">
           {season.poster_path && (
@@ -33,7 +33,7 @@ export async function SeasonDetails({
             />
           )}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
       </div>
 
       <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 relative">

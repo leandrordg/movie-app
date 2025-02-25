@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { getTv } from "@/utils/fetch-data";
+import { getTvDetails } from "@/hooks/tv";
 import { formatAverageVote, formatReleaseDate } from "@/utils/format-values";
 
 import { SeasonCard } from "@/components/season-card";
@@ -9,12 +9,12 @@ import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, InfoIcon, StarIcon } from "lucide-react";
 
 export async function TvDetails({ tvId }: { tvId: string }) {
-  const tv = await getTv(tvId, "details");
+  const tv = await getTvDetails(tvId);
 
   if (!tv) return notFound();
 
   return (
-    <div className="relative">
+    <div className="relative pt-16">
       <div className="absolute inset-0 h-64 md:h-96 -z-10">
         <div className="relative w-full h-64 md:h-96">
           {tv.backdrop_path && (
@@ -28,7 +28,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
             />
           )}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
       </div>
 
       <div className="flex items-start gap-8 max-w-7xl mx-auto py-12 px-4 relative">
@@ -78,7 +78,7 @@ export async function TvDetails({ tvId }: { tvId: string }) {
               <p className="flex items-center gap-1 text-muted-foreground">
                 <StarIcon className="size-4" /> Avaliação média
               </p>
-              <p>{formatAverageVote(tv.vote_average)} de 10.</p>
+              <p>{formatAverageVote(tv.vote_average)}</p>
             </div>
             <div>
               <p className="flex items-center gap-1 text-muted-foreground">

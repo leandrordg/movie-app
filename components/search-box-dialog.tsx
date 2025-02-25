@@ -1,7 +1,6 @@
 import Form from "next/form";
 
-import { SearchIcon } from "lucide-react";
-
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,19 +9,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { SearchIcon } from "lucide-react";
 
 export function SearchBoxDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="relative h-8 w-full rounded-md border px-4 shadow-xs text-sm cursor-pointer hover:bg-muted select-none">
-          <input
-            type="text"
-            placeholder="busque por filmes, séries, atores..."
-            className="w-full h-full outline-none pointer-events-none"
-          />
-          <SearchIcon className="absolute top-1/2 right-4 -translate-y-1/2 size-4" />
-        </div>
+        <Button variant="outline">
+          <SearchIcon className="size-4" />
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

@@ -48,7 +48,7 @@ export function EpisodeCard({
             </p>
             <p className="flex items-center gap-2 text-xs text-muted-foreground">
               <StarIcon className="size-4" />
-              {formatAverageVote(episode.vote_average)} de 10.
+              {formatAverageVote(episode.vote_average)}
             </p>
           </div>
 
